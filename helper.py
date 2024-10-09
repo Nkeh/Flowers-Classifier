@@ -72,7 +72,7 @@ def build_model(arch='densenet121', hidden_units=5, learning_rate=0.001):
     layers.append(nn.LogSoftmax(dim=1))
     
     model.classifier = nn.Sequential(*layers)
-    print(model)
+    print(model.classifier)
         
 #         for param in model.parameters():
 #             param.requires_grad = False
