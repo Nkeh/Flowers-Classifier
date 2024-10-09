@@ -170,7 +170,7 @@ def train_model(model, trainloader, validloader, optimizer, criterion, epochs, g
 
 
             
-def save_checkpoint(model, optimizer, class_to_idx, save_dir, arch, epochs, time):
+def save_checkpoint(model, optimizer, class_to_idx, save_dir, arch, epochs):
     checkpoint = {'architecture': arch,
                    'input_size': model.classifier[0].in_features,
                    'output_size': 102,
@@ -179,7 +179,7 @@ def save_checkpoint(model, optimizer, class_to_idx, save_dir, arch, epochs, time
                    'epochs': epochs,
                    'state_dict': model.state_dict()}
 
-    torch.save(checkpoint, f'{save_dir}/{time}-checkpoint.pth')
+    torch.save(checkpoint, save_dir)
     
 
 def load_checkpoint(filepath):

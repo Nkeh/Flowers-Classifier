@@ -9,7 +9,7 @@ def main():
     parser = argparse.ArgumentParser(description='Predicts the name of a flower')
     
     parser.add_argument('data_dir', type=str, help='Path to dataset')
-    parser.add_argument('--save_dir', type=str, default='', 
+    parser.add_argument('--save_dir', type=str, default=f'{time.time()}-checkpoint', 
                         help='Directory to save checkpoints')
     parser.add_argument('--arch', type=str, default='densenet121', 
                         help='architecture for trainig')
@@ -31,7 +31,7 @@ def main():
     training_time = time.time()
     helper.train_model(model, train_loader, valid_loader, optimizer, criterion, args.epochs, args.gpu)
     
-    helper.save_model(model, optimizer, class_to_idx, args.save_dir, args.arch, args.epochs, training_time)
+    helper.save_model(model, optimizer, class_to_idx, args.save_dir, args.arch, args.epochs)
     
 if __name__ == '__main__':
     main()
